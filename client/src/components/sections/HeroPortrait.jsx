@@ -74,7 +74,7 @@ export default function HeroPortrait() {
     .join('');
 
   const facts = [
-    { icon: Briefcase, label: 'Role', value: 'Frontend Developer @ Marutiflex' },
+    { icon: Briefcase, label: 'Role', value: 'Full Stack Developer @ Marutiflex' },
     { icon: Sparkles, label: 'Experience', value: `${profile.yearsOfExperience || '1.5+'} years · React, Node, AI` },
     { icon: MapPin, label: 'Based in', value: profile.location },
   ];

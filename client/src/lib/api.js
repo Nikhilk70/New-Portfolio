@@ -12,6 +12,9 @@ const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 const TIMEOUT_MS = 8000;
 export const firebaseEnabled = Boolean(import.meta.env.VITE_FIREBASE_API_KEY && import.meta.env.VITE_FIREBASE_PROJECT_ID);
 
+// VITE_DATA_SOURCE=json skips Firestore for content and reads data/portfolio.json (via the API or the bundled copy).
+const contentFromFirestore = firebaseEnabled && import.meta.env.VITE_DATA_SOURCE !== 'json';
+
 const withTimeout = (promise, ms = TIMEOUT_MS) =>
   Promise.race([promise, new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms}ms`)), ms))]);
 
@@ -38,7 +41,7 @@ async function request(path, options = {}) {
 }
 
 export async function fetchPortfolio() {
-  if (firebaseEnabled) {
+  if (contentFromFirestore) {
     try {
       const { loadPortfolioFromFirestore } = await import('./firebase');
       const data = await withTimeout(loadPortfolioFromFirestore());

@@ -10,7 +10,7 @@ export default function About() {
   const about = profile.about || [profile.summary];
 
   const facts = [
-    { icon: Briefcase, label: 'Current role', value: 'Frontend Developer @ Marutiflex' },
+    { icon: Briefcase, label: 'Current role', value: 'Full Stack Developer @ Marutiflex' },
     { icon: MapPin, label: 'Based in', value: profile.location },
     { icon: Mail, label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
     { icon: Phone, label: 'Phone', value: profile.phone, href: `tel:${(profile.phone || '').replace(/\s/g, '')}` },

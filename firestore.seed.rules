@@ -9,7 +9,7 @@ service cloud.firestore {
     match /{col}/{docId} {
       allow read: if col in ['site', 'skills', 'services', 'experience', 'projects', 'education', 'certificates'];
       allow write: if col in ['site', 'skills', 'services', 'experience', 'projects', 'education', 'certificates']
-        && request.time < timestamp.date(2026, 10, 9);
+        && request.time < timestamp.date(2026, 11, 18);
     }
 
     match /messages/{msgId} {

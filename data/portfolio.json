@@ -3,15 +3,15 @@
     "name": "Nikhil K K",
     "firstName": "Nikhil",
     "roles": [
+      "Full Stack Developer",
       "MERN Stack Developer",
-      "React.js Engineer",
       "Node.js Backend Developer",
       "AI Integration Specialist"
     ],
-    "headline": "Full Stack Developer building fast, scalable and AI-powered web experiences.",
-    "summary": "A skilled MERN Stack Developer with expertise in React.js and Node.js, experienced in developing dynamic, responsive, and scalable web applications. Proficient in backend development, database management, and API integration using Node.js, PostgreSQL, MySQL, and SQLite. Strong foundation in frontend technologies including HTML, CSS, JavaScript, React.js, and Bootstrap. Passionate about building high-performance, user-focused applications with maintainable code.",
+    "headline": "Full Stack Developer building scalable, cloud-deployed and AI-powered web applications.",
+    "summary": "Full Stack Developer with expertise in React.js, Node.js and Express, building scalable web applications end to end. Experienced in designing REST APIs, working with PostgreSQL and MongoDB, integrating AI into products, and containerising and deploying with Docker, Kubernetes and AWS. Passionate about high-performance, user-focused applications with maintainable code.",
     "about": [
-      "I'm a Full Stack Developer based in Bengaluru, currently working at Marutiflex Traders LLP where I build and scale enterprise web applications with role-based access control, workflow automation and data-heavy dashboards.",
+      "I'm a Full Stack Developer based in Bengaluru, working at Marutiflex Traders LLP. I joined as a Frontend Developer in June 2025 and moved into a Full Stack role in August 2026, building enterprise applications with React, Node.js and Express, REST APIs, PostgreSQL and MongoDB, deployed with Docker, Kubernetes and AWS.",
       "Beyond classic web development, I integrate AI into real products: Retrieval-Augmented Generation (RAG) systems, Model Context Protocol (MCP) connections, and AI assistants embedded inside CRM tools. I test and document every API I ship with Postman.",
       "I care about clean architecture, reusable components and shipping interfaces that feel fast and polished on every device."
     ],
@@ -25,7 +25,7 @@
     "whatsapp": "917994162314",
     "whatsappUrl": "https://wa.me/917994162314?text=Hi%20Nikhil%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect."
   },
-  "socials": [  
+  "socials": [
     {
       "id": "github",
       "label": "GitHub",
@@ -72,7 +72,7 @@
     },
     {
       "id": "projects",
-      "value": 8,
+      "value": 9,
       "suffix": "+",
       "label": "Projects Built"
     },
@@ -389,6 +389,25 @@
       ]
     },
     {
+      "id": "devops",
+      "title": "Cloud & DevOps",
+      "icon": "layers",
+      "items": [
+        {
+          "name": "AWS",
+          "level": 72
+        },
+        {
+          "name": "Docker",
+          "level": 75
+        },
+        {
+          "name": "Kubernetes",
+          "level": 68
+        }
+      ]
+    },
+    {
       "id": "tools",
       "title": "Tools & AI Assistants",
       "icon": "wrench",
@@ -544,14 +563,45 @@
   "experience": [
     {
       "id": "marutiflex",
+      "role": "Full Stack Developer",
+      "company": "Marutiflex Traders LLP",
+      "location": "Bengaluru, India",
+      "type": "Full-time",
+      "start": "August 2026",
+      "end": "Present",
+      "current": true,
+      "summary": "Promoted to Full Stack Developer: owning both the React frontend and the Node.js/Express backend of an enterprise application.",
+      "points": [
+        "Build and maintain full stack features using React, Node.js and Express, from UI and REST API design through to database and deployment.",
+        "Design and ship REST APIs backed by PostgreSQL and MongoDB, including role-based access control, workflow automation and data management features.",
+        "Integrate AI capabilities into the product, including AI assistants and RAG-style workflows inside the application.",
+        "Containerise services with Docker and deploy and orchestrate them with Kubernetes on AWS.",
+        "Work directly with project managers and clients to gather requirements and turn business needs into scalable technical solutions."
+      ],
+      "tech": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "PostgreSQL",
+        "MongoDB",
+        "AI Integration",
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Postman"
+      ]
+    },
+    {
+      "id": "marutiflex-frontend",
       "role": "Frontend Developer",
       "company": "Marutiflex Traders LLP",
       "location": "Bengaluru, India",
       "type": "Full-time",
       "start": "June 2025",
-      "end": "Present",
-      "current": true,
-      "summary": "Building and scaling an enterprise web application used across the organisation.",
+      "end": "July 2026",
+      "current": false,
+      "summary": "Started as a Frontend Developer on the enterprise web application.",
       "points": [
         "Developed and enhanced a scalable enterprise web application with role-based access control, workflow automation and data management features, reducing manual processes and improving organisational productivity.",
         "Designed and implemented 15+ responsive user interfaces and reusable components, ensuring cross-device compatibility and an improved user experience.",
@@ -571,8 +621,8 @@
     },
     {
       "id": "druv360",
-      "role": "Frontend Developer (Internship)",
-      "company": "DRUV360° Entrepreneurs Hub",
+      "role": "Junior Developer",
+      "company": "Druv 360°",
       "location": "Kochi, Kerala, India · Remote",
       "type": "Internship",
       "start": "January 2025",
@@ -586,9 +636,9 @@
         "Collaborated on backend development, API testing, debugging and performance optimisation to improve application reliability."
       ],
       "tech": [
+        "DRF",
         "Python",
         "Django",
-        "Django REST Framework",
         "SQLite",
         "Postman",
         "Git"
@@ -889,6 +939,50 @@
       ],
       "links": {
         "github": "https://github.com/Nikhilk70/openings-mcp",
+        "live": ""
+      },
+      "media": {
+        "cover": "",
+        "video": "",
+        "gallery": []
+      }
+    },
+    {
+      "id": "applypilot",
+      "slug": "applypilot",
+      "title": "ApplyPilot — Auto Job Agent",
+      "repoName": "Custom-MCP-Server",
+      "tagline": "An AI-assisted job application agent that reads job descriptions, tailors your LaTeX resume and fills applications in a real browser.",
+      "category": "AI / Automation",
+      "featured": true,
+      "year": "2026",
+      "status": "In Progress",
+      "role": "Full Stack Developer",
+      "accent": "violet",
+      "description": "ApplyPilot turns a Google Sheet of jobs into submitted applications. For each row it reads the job description from the Apply Link (Greenhouse, Lever, SmartRecruiters and Ashby APIs, structured job-posting data, Firecrawl or page text), tailors a LaTeX resume to that role using only verified resume facts, and fills the application form in a real Chrome window via Playwright. It pauses for CAPTCHAs, sign-ins and unknown questions, never guesses answers, never pays, and never applies to the same job twice. An orchestration MCP server exposes the agent to AI assistants, and a React web dashboard handles jobs, live runs, human hand-offs, resume data and settings.",
+      "highlights": [
+        "Reads job descriptions via ATS public APIs, JSON-LD job data, Firecrawl and page-text fallbacks.",
+        "Explainable skill matcher and resume planner that patches a LaTeX master template and compiles a tailored PDF.",
+        "Playwright engine that detects forms, classifies fields, fills answers from a trust-levelled question bank and gates submission.",
+        "Dry-run by default with explicit LIVE mode, human hand-off for CAPTCHAs and verification codes, and duplicate-application protection.",
+        "Google Sheets as the single database, with timeline, answer log and daily reports; MCP server for AI-assistant control.",
+        "React dashboard (Jobs, Apply, Needs you, Resume, Settings) with typecheck, lint and Vitest validation pipeline."
+      ],
+      "tech": [
+        "TypeScript",
+        "Node.js",
+        "React",
+        "Vite",
+        "Playwright",
+        "Model Context Protocol",
+        "Google Sheets API",
+        "LaTeX",
+        "Zod",
+        "Vitest",
+        "Firecrawl"
+      ],
+      "links": {
+        "github": "https://github.com/Nikhilk70/Custom-MCP-Server",
         "live": ""
       },
       "media": {
