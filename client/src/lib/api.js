@@ -1,6 +1,6 @@
 /**
  * Data client. Content is loaded in this order:
- *   1. Firestore (when VITE_FIREBASE_* env vars are set)
+ *   1. Firestore (only when VITE_DATA_SOURCE=firebase and VITE_FIREBASE_* env vars are set)
  *   2. Node API at VITE_API_URL (or /api via the Vite dev proxy)
  *   3. The bundled copy of data/portfolio.json, so the site always renders
  *
@@ -12,8 +12,9 @@ const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 const TIMEOUT_MS = 8000;
 export const firebaseEnabled = Boolean(import.meta.env.VITE_FIREBASE_API_KEY && import.meta.env.VITE_FIREBASE_PROJECT_ID);
 
-// VITE_DATA_SOURCE=json skips Firestore for content and reads data/portfolio.json (via the API or the bundled copy).
-const contentFromFirestore = firebaseEnabled && import.meta.env.VITE_DATA_SOURCE !== 'json';
+// Content comes from data/portfolio.json (via the API or the bundled copy) unless VITE_DATA_SOURCE=firebase.
+// Firestore only wins when asked for, so an out-of-date Firestore copy can't override the JSON in the repo.
+const contentFromFirestore = firebaseEnabled && import.meta.env.VITE_DATA_SOURCE === 'firebase';
 
 const withTimeout = (promise, ms = TIMEOUT_MS) =>
   Promise.race([promise, new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms}ms`)), ms))]);
@@ -52,6 +53,7 @@ export async function fetchPortfolio() {
   }
   try {
     const json = await request('/portfolio');
+    if (!json?.data?.profile) throw new Error('API returned no portfolio data');
     return { data: json.data, source: 'api' };
   } catch (err) {
     console.warn('[portfolio] API unavailable, using bundled JSON fallback.', err?.message);
