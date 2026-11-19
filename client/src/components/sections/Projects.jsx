@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Github, Globe, Play } from 'lucide-react';
+import { ArrowUpRight, Github, Globe } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import TiltCard from '@/components/ui/TiltCard';
 import { usePortfolio } from '@/hooks/usePortfolio.jsx';
@@ -15,18 +15,43 @@ const ACCENT_GRADIENT = {
   blue: 'from-blue-500/50 via-blue-900/30 to-ink-900',
 };
 
+
 export function ProjectCover({ project, className = '' }) {
   const { media = {}, accent = 'violet', title } = project;
-  if (media.cover) {
-    return <img src={media.cover} alt={title} className={`h-full w-full object-cover ${className}`} />;
+
+  // Automatically play Cloudinary video
+  if (media.video) {
+    return (
+      <video
+        src={media.video}
+        className={`h-full w-full object-cover ${className}`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
+    );
   }
-  // generated placeholder cover
+
+  if (media.cover) {
+    return (
+      <img
+        src={media.cover}
+        alt={title}
+        className={`h-full w-full object-cover ${className}`}
+      />
+    );
+  }
+
   return (
     <div className={`relative h-full w-full overflow-hidden bg-gradient-to-br ${ACCENT_GRADIENT[accent] || ACCENT_GRADIENT.violet} ${className}`}>
       <div className="absolute inset-0 grid-bg opacity-70" />
       <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full border border-white/10" />
       <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full border border-white/10" />
-      <p className="absolute bottom-5 left-6 font-display text-5xl font-extrabold text-white/10">{title.slice(0, 2).toUpperCase()}</p>
+      <p className="absolute bottom-5 left-6 font-display text-5xl font-extrabold text-white/10">
+        {title.slice(0, 2).toUpperCase()}
+      </p>
     </div>
   );
 }
@@ -43,13 +68,6 @@ export function ProjectCard({ project, index = 0 }) {
           {status && <span className="accent-bg accent-text rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] backdrop-blur">{status}</span>}
         </div>
         <span className="absolute right-5 top-5 font-mono text-xs text-white/40">{String(index + 1).padStart(2, '0')}</span>
-        {media.video && (
-          <span className="absolute inset-0 grid place-items-center opacity-0 transition-opacity group-hover:opacity-100">
-            <span className="grid h-14 w-14 place-items-center rounded-full bg-white/90 text-ink-950">
-              <Play size={20} className="ml-0.5" />
-            </span>
-          </span>
-        )}
       </Link>
 
       <div className="flex flex-1 flex-col p-6">
