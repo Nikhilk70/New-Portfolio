@@ -33,15 +33,30 @@ export default function Navbar() {
   // highlight the section currently in view
   useEffect(() => {
     if (!isHome) return undefined;
-    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean);
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`));
-      },
-      { rootMargin: '-40% 0px -55% 0px' },
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
+    // Worked out from the scroll position on every scroll, and the sections are looked up each time,
+    // so it stays right when sections mount late, change height, or are skipped by a fast scroll.
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.4;
+      let current = '';
+      for (const l of LINKS) {
+        const el = document.querySelector(l.href);
+        if (el && el.getBoundingClientRect().top <= line) current = l.href;
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [isHome, location.key]);
 
   useEffect(() => setOpen(false), [location]);

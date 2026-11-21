@@ -40,7 +40,22 @@ function VideoBlock({ project }) {
         </>
       )}
 
-      {video && !play && (
+      {/* Direct video files play on their own with no player controls. Browsers only allow autoplay when muted. */}
+      {video && video.type === 'video' && (
+        <video
+          key={video.src}
+          src={video.src}
+          poster={/res\.cloudinary\.com\/.+\/video\/upload\//.test(video.src) ? video.src.replace(/\.\w+$/, '.jpg') : undefined}
+          autoPlay
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          className="pointer-events-none absolute inset-0 h-full w-full bg-black"
+        />
+      )}
+
+      {video && video.type === 'iframe' && !play && (
         <button onClick={() => setPlay(true)} className="group absolute inset-0 w-full" aria-label="Play video">
           <ProjectCover project={project} className="transition-transform duration-1000 group-hover:scale-105" />
           <span className="absolute inset-0 bg-ink-950/40" />
@@ -55,7 +70,6 @@ function VideoBlock({ project }) {
       {video && play && video.type === 'iframe' && (
         <iframe src={`${video.src}${video.src.includes('?') ? '&' : '?'}autoplay=1`} title={`${project.title} video`} className="absolute inset-0 h-full w-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
       )}
-      {video && play && video.type === 'video' && <video src={video.src} controls autoPlay className="absolute inset-0 h-full w-full bg-black" />}
     </div>
   );
 }
